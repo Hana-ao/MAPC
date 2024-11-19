@@ -1,0 +1,16 @@
+Analyse de code (12 nov.)
+
+1. Analyser Cell (Minesweeper)
+->Description : 
+/**
+ * Represents a cell in the mine field. A cell has two orthogonal properties
+ * that can be modified: a cell can be mined or not, and a cell can be hidden,
+ * marked (as hiding a mine), or revealed.
+ */
+ ->Idée à première vue: Eventuellement une interface Cell, implémentée par plusieurs variétés de cellules, une modifiable, une qu'on 
+ peut miner ou pas.. sinon une classe Cell, (abstract ou pas) dont d'autres cellules pourraient hériter ?
+
+2. Analyser Position (Minesweeper)
+3. Analyser Dimension (JetUML)
+4. Analyser Card (Solitaire)
+5. Analyser Rectangle (JetUML)
