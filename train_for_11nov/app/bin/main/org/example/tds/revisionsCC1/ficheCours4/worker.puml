@@ -1,0 +1,29 @@
+@startuml
+interface WorkTaskStrategy {
+    + void work()
+}
+
+class WorkTask1 implements WorkTaskStrategy {
+    + void work() // Sysout "Task 1"
+}
+
+class WorkTask2 implements WorkTaskStrategy {
+    + void work() // Sysout "Task 2"
+}
+
+class DefaultWorkTask implements WorkTaskStrategy {
+    + void work() // Sysout "Default task"
+}
+
+class Worker {
+    - WorkTaskStrategy strategy
+    + Worker(WorkTaskStrategy strategy)
+    + void work()
+    + WorkTaskStrategy getStrategy()
+}
+
+Worker --> WorkTaskStrategy
+WorkTaskStrategy <|.. WorkTask1
+WorkTaskStrategy <|.. WorkTask2
+WorkTaskStrategy <|.. DefaultWorkTask
+@enduml

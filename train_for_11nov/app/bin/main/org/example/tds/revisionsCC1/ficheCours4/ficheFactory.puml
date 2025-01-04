@@ -1,0 +1,31 @@
+@startuml
+' Interface pour les sources de cartes (abstraction principale)
+interface CardSource {
+    + Card draw() ' Méthode pour tirer une carte
+}
+
+' Implémentation concrète : un paquet de cartes classique
+class Deck implements CardSource {
+    + Card draw() ' Logique pour tirer une carte
+}
+
+' Interface pour créer des sources de cartes (Factory Method)
+interface CardSourceCreator {
+    + CardSource createCardSource() ' Méthode pour instancier une source
+}
+
+' Créateur concret : fabrique un Deck
+class DeckCreator implements CardSourceCreator {
+    + CardSource createCardSource() ' Retourne une instance de Deck
+}
+
+' Client principal : consomme les créateurs et utilise les sources
+class Main {
+    + static void main(String[] args) ' Point d'entrée
+}
+
+' Relations entre les classes
+CardSourceCreator <|.. DeckCreator : "Implémente"
+CardSource <|.. Deck : "Implémente"
+Main --> CardSourceCreator : "Dépend de"
+@enduml

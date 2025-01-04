@@ -1,0 +1,16 @@
+@startuml
+interface SortStrategy {
+    + void sort(List<ICard> cards)
+}
+class SortByRank implements SortStrategy {
+    + void sort(List<ICard> cards)
+}
+class CardSorter {
+    - SortStrategy strategy
+    + CardSorter(SortStrategy strategy)
+    + void sort(List<ICard> cards)
+    + void setStrategy(SortStrategy newStrat)
+}
+CardSorter --> SortStrategy
+SortStrategy <|.. SortByRank
+@enduml

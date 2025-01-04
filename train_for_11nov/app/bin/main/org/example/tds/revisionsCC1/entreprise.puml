@@ -1,0 +1,21 @@
+@startuml
+class Entreprise {
+    - nom : String
+    + calculerBudgetTotal() : double
+}
+
+class Departement {
+    - nom : String
+    - budget : double
+    + calculerBudget() : double
+}
+
+class Employe {
+    - nom : String
+    - position : String
+    - salaire : double
+}
+
+Entreprise "1" --> "n" Departement : contient
+Departement "1" --> "n" Employe : gère
+@enduml

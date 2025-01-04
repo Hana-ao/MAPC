@@ -1,0 +1,94 @@
+Tu as raison, il faut prioriser les informations pertinentes pour ton CC en se basant sur les sujets que tu as déjà partagés (analyse de code, UML, refactorisation). Voici une version encore plus ciblée et concise de la section Iterator, Comparator, Comparable, qui met l’accent sur les points clés nécessaires en examen.
+
+Version ultra-ciblée pour Iterator, Comparator, Comparable (Recto)
+
+1. Iterator : Parcourir une collection de manière abstraite
+
+**Iterator (Parcours abstrait)**
+- Problème : Couplage direct avec la structure interne de la collection.
+- Solution : Interface pour parcours standardisé.
+
+**À retenir :**
+- Méthodes clés :
+  - `hasNext()` : Y a-t-il un élément suivant ?
+  - `next()` : Récupère l’élément suivant.
+- Exemples typiques : Boucle `while` ou `for-each` (si `Iterable` est implémenté).
+
+**Exemple de code :**
+```java
+for (Card card : stack) { // si stack implémente Iterable<Card>
+    System.out.println(card);
+}
+
+UML :
+	•	Iterable<T> retourne Iterator<T>.
+	•	Iterator contient hasNext() et next().
+
+---
+
+#### **2. Comparator : Comparaison externe et dynamique**
+```plaintext
+**Comparator (Comparaison externe)**
+- Problème : Besoin de plusieurs ordres de tri différents.
+- Solution : Classe externe qui compare des objets.
+
+**À retenir :**
+- Méthode clé : `compare(T o1, T o2)` :
+  - Retourne un int (>0, =0, <0 selon l’ordre).
+- Avantages :
+  - Découple la logique de tri de la classe.
+  - Utile pour définir des tris multiples (par âge, par nom, etc.).
+
+**Exemple de code :**
+```java
+Comparator<Person> byAge = (p1, p2) -> Integer.compare(p1.getAge(), p2.getAge());
+Collections.sort(people, byAge); // Tri dynamique
+
+UML simplifié :
+	•	Comparator<T> –> Implémentations concrètes (NameComparator, AgeComparator).
+
+---
+
+#### **3. Comparable : Comparaison naturelle et par défaut**
+```plaintext
+**Comparable (Comparaison naturelle)**
+- Problème : Une classe ne peut pas se comparer directement sans ordre défini.
+- Solution : Implémenter l’interface pour définir un ordre naturel.
+
+**À retenir :**
+- Méthode clé : `compareTo(T o)` :
+  - Ordre par défaut dans les collections triées.
+- Avantage : Simplifie l’utilisation avec `Collections.sort`.
+
+**Exemple de code :**
+```java
+public class Person implements Comparable<Person> {
+    public int compareTo(Person other) {
+        return Integer.compare(this.age, other.age); // Ordre par âge
+    }
+}
+Collections.sort(people); // Tri par défaut
+
+Différence avec Comparator :
+	•	Comparable : Ordre naturel pour UNE logique de tri (dans la classe).
+	•	Comparator : Ordre EXTERNE pour des tris multiples.
+
+---
+
+### **Pourquoi cette version est pertinente pour ton CC**
+1. **Focus sur les usages clés en Java :**
+   - Tu peux expliquer les problèmes résolus par chaque interface.
+   - Tu as des exemples de code typiques pour analyser ou refactoriser un code fourni.
+
+2. **UML ultra-minimaliste :**
+   - Pas de détails superflus, juste les relations importantes (par ex., `Iterable --> Iterator`, `Comparator --> Implémentations`).
+
+3. **Différence Comparator vs Comparable :**
+   - Très souvent testée en examen pour voir si tu sais les différencier.
+
+4. **Compact et visuel :**
+   - Chaque concept tient en quelques lignes avec un résumé clair.
+
+---
+
+Dis-moi si tu veux encore simplifier ou si on passe au verso avec les patrons du cours 5 ! 😊

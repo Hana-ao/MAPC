@@ -2,6 +2,8 @@
 package org.example.cards.metier.impl;
 
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.example.cards.metier.api.ICard;
 
@@ -24,18 +26,28 @@ Tâches :
 
  */
 public class Card implements ICard, Comparable<Card>{
-
-
     
 
     private final Rank rank;
     private final Suit suit;
+    private static final Map<Paire<Rank,Suit>, Card> cards = new HashMap<>();
 
-    public Card(Rank rank, Suit suit){
+
+    protected Card(Rank rank, Suit suit){
         this.rank = rank;
         this.suit = suit;
     }
 
+    public static Card getCard(Rank rank, Suit suit){
+        if(rank == null || suit == null){
+            throw new IllegalArgumentException("Les arguments ne peuvent pas être nuls");
+        }
+        Paire key = new Paire<Rank,Suit>(rank, suit);
+        cards.putIfAbsent(key, new Card(rank, suit)); //création à la demande de la carte ; puis on la place dans la partie "valeurs" de la map
+        return cards.get(key);
+
+
+    }
     public Rank getRank(){
         return rank;
     }

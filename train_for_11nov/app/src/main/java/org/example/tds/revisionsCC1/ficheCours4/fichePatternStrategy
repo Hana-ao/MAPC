@@ -1,0 +1,54 @@
+Voici un exemple de mindmap concise pour l’exemple avec SortStrategy et CardSorter, en restant clair et compact :
+
+Mindmap : Pattern Strategy (Exemple CardSorter)
+
+	•	Centre : Pattern Strategy
+	•	Problème (Switch Statement) :
+	•	Viol OCP : Modifications nécessaires pour ajouter un tri.
+	•	Magic Numbers : Peu explicite (choice = 0 ?).
+	•	Complexité accrue.
+	•	Solution :
+	•	Découpler comportement avec classes spécifiques.
+	•	Permet choix dynamique de stratégie.
+
+(ne pas mettre la structure, on va utiliser uml et mettre des comms)
+	•	Structure :
+	•	Interface : SortStrategy :
+	•	Méthode sort(List<ICard>).
+	•	Classes concrètes :
+	•	SortByRank : Trie par rang.
+	•	SortBySuit : Trie par couleur.
+	•	Contexte : CardSorter :
+	•	Attribut : SortStrategy strategy.
+	•	Méthodes :
+	•	CardSorter(SortStrategy) : Injection de stratégie.
+	•	sort(List<ICard>) : Appelle strategy.sort.
+	•	setStrategy(SortStrategy) : Change de stratégie.
+    
+	•	Avantages :
+	•	OCP : Ajouter des tris sans modifier CardSorter.
+	•	DIP : Dépend de l’abstraction (SortStrategy).
+	•	Réduction complexité, testabilité accrue.
+
+Ajout UML pour compléter
+
+Ajoute en dessous ou à côté de la mindmap le diagramme UML suivant, en version compacte :
+
+@startuml
+interface SortStrategy {
+    + void sort(List<ICard> cards)
+}
+class SortByRank implements SortStrategy {
+    + void sort(List<ICard> cards)
+}
+class CardSorter {
+    - SortStrategy strategy
+    + CardSorter(SortStrategy strategy)
+    + void sort(List<ICard> cards)
+    + void setStrategy(SortStrategy newStrat)
+}
+CardSorter --> SortStrategy
+SortStrategy <|.. SortByRank
+@enduml
+
+(voir éventuellement cours du prof)

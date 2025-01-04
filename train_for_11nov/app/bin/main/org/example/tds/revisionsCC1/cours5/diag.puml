@@ -1,0 +1,14 @@
+@startuml
+[*] --> EMPTY : initialize()
+state EMPTY {
+    
+}
+
+EMPTY --> INCOMPLETE : addCard() [cardCount < 52] / updateDeck()
+INCOMPLETE --> INCOMPLETE : addCard() [cardCount < 52] / updateDeck()
+INCOMPLETE --> FULL : addCard() [cardCount == 52] / finalizeDeck()
+
+FULL --> FULL : shuffle() / shuffleDeck()
+FULL --> INCOMPLETE : removeCard() [cardCount < 52] / updateDeck()
+
+@enduml

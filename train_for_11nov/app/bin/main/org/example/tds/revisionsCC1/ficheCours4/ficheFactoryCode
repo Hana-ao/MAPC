@@ -1,0 +1,43 @@
+Je comprends ! Voici une version ultra-condensée pour intégrer Factory Method dans ta fiche sans occuper trop d’espace :
+
+Factory Method (Patron de création)
+
+Problèmes (code initial) :
+
+	1.	Couplage fort client / produit concret :
+	•	Le client dépend de l’implémentation concrète (Deck).
+	•	Brise le OCP : tout ajout/modification nécessite de changer le client.
+	2.	Absence de SRP :
+	•	Le client gère à la fois la création (new Deck()) et l’utilisation (source.draw()).
+
+Solution : Factory Method
+
+	•	Idée : Déléguer la création d’objets à une méthode abstraite.
+	•	Structure :
+	•	Interface CardSource : Contrat des sources de cartes.
+	•	Implémentations concrètes : Deck, ShuffledDeck, etc.
+	•	Interface CardSourceCreator : Contient une Factory Method createCardSource().
+	•	Client (Main) : Dépend de CardSourceCreator, pas des classes concrètes.
+
+Code simplifié :
+
+interface CardSource { Card draw(); }
+interface CardSourceCreator { CardSource createCardSource(); }
+class Deck implements CardSource { public Card draw() { return new Card(); }}
+class DeckCreator implements CardSourceCreator { public CardSource createCardSource() { return new Deck(); }}
+// Client
+class Main { public static void main(String[] args) {
+    CardSourceCreator creator = new DeckCreator();
+    CardSource source = creator.createCardSource();
+    source.draw();
+}}
+
+Résumé :
+
+	1.	Avantages :
+	•	Couplage réduit, extensibilité accrue (respect OCP).
+	•	Le client est indépendant des implémentations concrètes.
+	2.	Applications typiques :
+	•	Création dynamique d’objets selon des critères spécifiques.
+
+Avec cette version, tu peux intégrer facilement Factory Method sur une demi-page ou moins. Si tu veux inclure un mini-diagramme UML, choisis les acteurs principaux (CardSource, CardSourceCreator, Deck, DeckCreator, et Main) pour rester compact. 😊

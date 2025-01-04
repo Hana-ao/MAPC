@@ -29,7 +29,7 @@ public class CardSorterV1 {
             }
                 ); /*	compareRank != 0 signifie que les deux cartes comparées ont des rangs différents. Dans ce cas, on retourne compareRank, ce qui permet de trier les cartes en fonction de leur rang.
                 •	c1.getSuit().compareTo(c2.getSuit()) est exécuté uniquement si compareRank == 0, c’est-à-dire si les cartes ont le même rang. Dans ce cas, on utilise la comparaison par suit (couleur) pour départager les cartes. */
-            }
+        }}
     
     //les problèmes sans pattern strategy
     /*Sujet à erreurs ? comme le tri avec comparator; 
@@ -40,23 +40,23 @@ public class CardSorterV1 {
     //du coup le pattern strategy consiste à transformer CardSorter en une classe qu'on peut pas instancier, mais dont tlm dépend ? comme un héritage? et les sous classes font un tri spécifique?
     
     
-    public static void main(String[] args){ //En Java, la méthode main doit se trouver dans une classe publique.
-        List<Card> myListOfCards = Arrays.asList(
-            new Card(Rank.QUEEN, Suit.HEARTS), 
-            new Card(Rank.JACK, Suit.HEARTS),
-            new Card(Rank.KING, Suit.CLUBS)) ;
-        System.out.println("Affichage de la liste avant sort() ");
+//     public static void main(String[] args){ //En Java, la méthode main doit se trouver dans une classe publique.
+//         List<Card> myListOfCards = Arrays.asList(
+//             new Card(Rank.QUEEN, Suit.HEARTS), 
+//             new Card(Rank.JACK, Suit.HEARTS),
+//             new Card(Rank.KING, Suit.CLUBS)) ;
+//         System.out.println("Affichage de la liste avant sort() ");
 
-        for(Card elt : myListOfCards){
-            System.out.println(elt);
-        }
+//         for(Card elt : myListOfCards){
+//             System.out.println(elt);
+//         }
 
-        sortByRank(myListOfCards);
-        System.out.println("Affichage de la liste après sort() ");
+//         sortByRank(myListOfCards);
+//         System.out.println("Affichage de la liste après sort() ");
 
-        for(Card elt : myListOfCards){
-            System.out.println(elt);
-        }
+//         for(Card elt : myListOfCards){
+//             System.out.println(elt);
+//         }
 
 
-} }
+// } }

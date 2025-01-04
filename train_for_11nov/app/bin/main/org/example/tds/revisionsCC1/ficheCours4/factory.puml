@@ -1,0 +1,32 @@
+@startuml
+interface Product {
+    + void doSomething()
+}
+
+class ProductA implements Product {
+    + void doSomething()
+}
+
+class ProductB implements Product {
+    + void doSomething()
+}
+
+abstract class Creator {
+    + Product createProduct()
+    + void process()
+}
+
+class CreatorA extends Creator {
+    + Product createProduct()
+}
+
+class CreatorB extends Creator {
+    + Product createProduct()
+}
+
+Client --> Creator
+Creator <|-- CreatorA
+Creator <|-- CreatorB
+Product <|-- ProductA
+Product <|-- ProductB
+@enduml
