@@ -33,7 +33,7 @@ public class Card implements ICard, Comparable<Card>{
     private static final Map<Paire<Rank,Suit>, Card> cards = new HashMap<>();
 
 
-    protected Card(Rank rank, Suit suit){
+    public Card(Rank rank, Suit suit){ //je l'avais mis protected, je sais plus pk
         this.rank = rank;
         this.suit = suit;
     }

@@ -1,4 +1,4 @@
-package org.example.tds.td3;
+package org.example.cards.metier.impl;
 import java.util.*;
 
 import org.example.cards.metier.api.ICard;
@@ -7,7 +7,7 @@ import org.example.cards.metier.api.ICard.Suit;
 
 //command shift p 
 //reset (reintinitalise les bdd de vscode)
-public class Hand implements IHand {
+public class Hand implements IHand, Cloneable {
     
     /*Hand est une classe qui représente la main d’un joueur. 
     Elle contient un certain nombre de cartes (par exemple, 5 cartes pour le poker). 
@@ -86,6 +86,12 @@ public class Hand implements IHand {
 
     }
     
+    //Cours 6 - cloner Hand
+    public Hand clone() throws CloneNotSupportedException{
+        Hand clone = (Hand) super.clone(); //copie superficielle, on ne fait que copier les adresses mémoires des cartes, on ne crée pas de nouveaux objets de cartes
+        clone.hand = new ArrayList<>(hand);
+        return clone;
+    }
     
     class HandIterator implements Iterator<ICard>{
         private int currentIndex = 0;

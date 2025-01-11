@@ -4,18 +4,18 @@ import java.util.*;
 
 import org.example.cards.metier.api.CardGameProcessor;
 import org.example.cards.metier.api.ICard;
+import org.example.cards.metier.api.IHand;
 import org.example.cards.metier.api.ICard.Rank;
 import org.example.cards.metier.api.ICard.Suit;
 import org.example.cards.metier.impl.BlackJackProcessor;
 import org.example.cards.metier.impl.Card;
 import org.example.cards.metier.impl.CardSorter;
 import org.example.cards.metier.impl.Deck;
+import org.example.cards.metier.impl.Hand;
 import org.example.cards.metier.impl.Joker;
 import org.example.cards.metier.impl.PokerProcessor;
 import org.example.cards.metier.impl.SortByRank;
 import org.example.tds.td2.MultiDeck;
-import org.example.tds.td3.Hand;
-import org.example.tds.td3.IHand;
 
 public class Main {
     public static void main(String[] args) {
